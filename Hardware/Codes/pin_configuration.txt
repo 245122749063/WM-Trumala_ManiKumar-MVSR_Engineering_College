@@ -1,0 +1,78 @@
+SMART WASTE BIN MONITORING SYSTEM
+Pin Configuration – ESP32
+
+Microcontroller:
+--------------
+Board: ESP32 Dev Module
+Operating Voltage: 3.3V
+Communication: Wi-Fi (MQTT)
+
+--------------------------------------------------
+SENSOR & ACTUATOR PIN MAPPING
+--------------------------------------------------
+
+1. Ultrasonic Distance Sensor (HC-SR04)
+---------------------------------------
+Purpose: Measure waste bin fill level
+
+VCC   → ESP32 3.3V
+GND   → ESP32 GND
+TRIG  → GPIO 5
+ECHO  → GPIO 18
+
+--------------------------------------------------
+
+2. PIR Motion Sensor
+--------------------
+Purpose: Detect object presence near bin opening
+
+VCC   → ESP32 5V
+GND   → ESP32 GND
+OUT   → GPIO 26
+
+--------------------------------------------------
+
+3. Potentiometer (Moisture Simulation)
+-------------------------------------
+Purpose: Simulate moisture level for DRY/WET classification
+
+VCC   → ESP32 3.3V
+GND   → ESP32 GND
+SIG   → GPIO 15 (ADC input)
+
+ADC Range: 0 – 4095
+Threshold used for classification: ~2000
+
+--------------------------------------------------
+
+4. Servo Motor – Dry Waste Bin
+------------------------------
+Purpose: Open/close dry waste bin lid
+
+VCC   → ESP32 5V
+GND   → ESP32 GND
+PWM   → GPIO 14
+
+--------------------------------------------------
+
+5. Servo Motor – Wet Waste Bin
+------------------------------
+Purpose: Open/close wet waste bin lid
+
+VCC   → ESP32 5V
+GND   → ESP32 GND
+PWM   → GPIO 27
+
+--------------------------------------------------
+
+NOTES:
+------
+• All grounds (GND) are common.
+• Servo motors require sufficient current; external power is recommended in real deployment.
+• Potentiometer is used only for simulation; actual system may use a moisture sensor.
+• GPIO pins are selected to avoid boot and flash conflicts on ESP32.
+• This configuration was validated using Wokwi simulation.
+
+--------------------------------------------------
+END OF PIN CONFIGURATION
+--------------------------------------------------
